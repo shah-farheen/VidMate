@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "805487457924",
+    "project_id": "firebase-vidmate"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805487457924:android:bffd269f7f602938",
+        "android_client_info": {
+          "package_name": "com.bits.farheen.vidmate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "805487457924-9pv66pkskiv4p8m3lkgbqjv7bi99311s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bits.farheen.vidmate",
+            "certificate_hash": "CA28AE312C62E72607F05ADD4334D832C69F4A0D"
+          }
+        },
+        {
+          "client_id": "805487457924-73pi5nktfhfurc5v73qq2qifa0tohjsg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHgY43I-fh8WLKcggGSfeZUVgWGXmNzAk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
