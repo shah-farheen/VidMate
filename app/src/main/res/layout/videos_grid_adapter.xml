@@ -26,7 +26,7 @@
 
     <TextView
         android:id="@+id/text_duration"
-        android:layout_width="90dp"
+        android:layout_width="70dp"
         android:layout_height="30dp"
         android:layout_below="@id/text_title"
         android:text="2min"
@@ -34,22 +34,30 @@
         android:textSize="12sp"
         android:background="@android:color/white"/>
 
-    <android.support.v7.widget.AppCompatRatingBar
-        android:id="@+id/image_rating_bar"
+    <LinearLayout
+        android:id="@+id/layout_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@android:color/white"
         android:layout_alignEnd="@id/text_title"
         android:layout_alignRight="@id/text_title"
-        android:layout_alignBottom="@id/text_duration"
-        android:foregroundGravity="center_vertical"
-        android:background="@android:color/white"
-        android:stepSize="0.1"
-        android:rating="3.5"
-        android:isIndicator="true"
-        style="?android:ratingBarStyleSmall"
-        android:layout_toEndOf="@id/text_duration"
         android:layout_toRightOf="@id/text_duration"
-        android:layout_below="@id/text_title"
-        android:numStars="5"/>
+        android:layout_toEndOf="@id/text_duration"
+        android:layout_alignBottom="@id/text_duration"
+        android:layout_below="@id/text_title">
+
+        <android.support.v7.widget.AppCompatRatingBar
+            android:id="@+id/image_rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:stepSize="0.1"
+            android:rating="3.5"
+            android:isIndicator="true"
+            style="?android:ratingBarStyleSmall"
+            android:numStars="5"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

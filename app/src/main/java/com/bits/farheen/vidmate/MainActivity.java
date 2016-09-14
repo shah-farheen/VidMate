@@ -3,11 +3,10 @@ package com.bits.farheen.vidmate;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
@@ -21,10 +20,10 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
-    private Context mContext;
-    private TextView textUserName;
-    private ImageView imageProfile;
-    private RecyclerView gridVideos;
+    Context mContext;
+    TextView textUserName;
+    ImageView imageProfile;
+    RecyclerView gridVideos;
 
     ArrayList<VideosGridModel> videoData = new ArrayList<>();
 
@@ -48,10 +47,14 @@ public class MainActivity extends AppCompatActivity {
         Cursor videosCursor = getContentResolver().query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
                 projection, null, null, null);
 
-        if(videosCursor != null){
-            while (videosCursor.moveToNext()){
+
+        if (videosCursor != null) {
+            while (videosCursor.moveToNext()) {
                 Log.e(TAG, "onCreate: " + videosCursor.getString(1));
-                VideosGridModel model = new VideosGridModel(videosCursor.getString(0), videosCursor.getString(1), videosCursor.getString(2), videosCursor.getLong(3));
+                VideosGridModel model = new VideosGridModel(videosCursor.getString(0),
+                        videosCursor.getString(1),
+                        videosCursor.getString(2),
+                        videosCursor.getLong(3));
                 videoData.add(model);
             }
             videosCursor.close();

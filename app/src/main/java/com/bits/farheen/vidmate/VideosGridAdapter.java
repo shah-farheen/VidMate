@@ -17,14 +17,14 @@ import java.util.List;
 /**
  * Created by farheen on 9/14/16
  */
-public class VideosGridAdapter extends RecyclerView.Adapter<VideosGridAdapter.VideosHolder>{
+public class VideosGridAdapter extends RecyclerView.Adapter<VideosGridAdapter.VideosHolder> {
 
     private static final String TAG = "VideosGridAdapter";
     private List<VideosGridModel> data;
     private LayoutInflater inflater;
     private Context mContext;
 
-    public VideosGridAdapter(Context context, List<VideosGridModel> data){
+    public VideosGridAdapter(Context context, List<VideosGridModel> data) {
         this.data = data;
         mContext = context;
         inflater = LayoutInflater.from(context);
@@ -39,7 +39,12 @@ public class VideosGridAdapter extends RecyclerView.Adapter<VideosGridAdapter.Vi
     @Override
     public void onBindViewHolder(VideosHolder holder, int position) {
         holder.textTitle.setText(data.get(position).videoTitle);
-        holder.textDuration.setText(String.valueOf(data.get(position).videoDuration));
+        long videoSeconds = data.get(position).videoDuration / 1000;
+        long videoMinutes = videoSeconds / 60;
+        videoSeconds -= (videoMinutes * 60);
+        String videoDuration = videoMinutes > 0 ? videoMinutes+"m " + videoSeconds+"s" : videoSeconds+"s";
+        holder.textDuration.setText(videoDuration);
+
         final String videoPath = data.get(position).videoPath;
         final String mimeType = data.get(position).videoMimeType;
 
@@ -57,7 +62,7 @@ public class VideosGridAdapter extends RecyclerView.Adapter<VideosGridAdapter.Vi
         return data.size();
     }
 
-    static class VideosHolder extends RecyclerView.ViewHolder{
+    static class VideosHolder extends RecyclerView.ViewHolder {
 
         ImageView imageThumbnail;
         TextView textTitle;
@@ -73,14 +78,12 @@ public class VideosGridAdapter extends RecyclerView.Adapter<VideosGridAdapter.Vi
         }
     }
 
-    public void playVideo(Uri videoUri, String mimeType){
-        Intent playIntent = new Intent(Intent.ACTION_VIEW);
-        playIntent.setData(videoUri);
-        playIntent.setType(mimeType);
-        if(playIntent.resolveActivity(mContext.getPackageManager()) != null){
+    public void playVideo(Uri videoUri, String mimeType) {
+        Intent playIntent = new Intent(Intent.ACTION_VIEW)
+                .setDataAndType(videoUri, mimeType);
+        if (playIntent.resolveActivity(mContext.getPackageManager()) != null) {
             mContext.startActivity(playIntent);
-        }
-        else {
+        } else {
             Toast.makeText(mContext.getApplicationContext(), "No App to Play Video", Toast.LENGTH_SHORT).show();
         }
     }
