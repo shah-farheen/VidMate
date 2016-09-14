@@ -19,6 +19,7 @@
         android:layout_width="180dp"
         android:layout_height="30dp"
         android:text="Hello"
+        android:maxLines="1"
         android:textSize="15sp"
         android:gravity="center"
         android:background="@android:color/white"

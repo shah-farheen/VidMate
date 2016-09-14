@@ -6,6 +6,7 @@ package com.bits.farheen.vidmate;
 public class Constants {
 
     public static final int googleSignInRequestCode = 1;
+    public static final int readStorageRequestCode = 10;
 
     public static final String userId = "userId";
     public static final String userName = "userName";
